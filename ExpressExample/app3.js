@@ -16,7 +16,7 @@ app.use(function (req, res, next) {
 app.use("/", function (req, res, next) {
   console.log("두번째 미들웨어 호출됨");
 
-  res.writeHead(200, { "Content-Type": "text/html; charset=utf8" });
+  res.writeHead("200", { "Content-Type": "text/html; charset=utf8" });
   res.end("<h1>Express 서버에서 응답한 결과입니다 : " + req.user + "</h1>");
 });
 

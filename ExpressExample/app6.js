@@ -6,18 +6,23 @@ let app = express();
 app.set("port", process.env.PORT || 3000);
 
 app.use(function (req, res, next) {
-  console.log("첫번째 미들웨어 호출됨");
+  console.log("첫 번째 미들웨어에서 요청을 처리함");
 
   let userAgent = req.header("User-Agent");
   let paramName = req.query.name;
 
-  res.send(
-    "<h3>서버에서 응답. User-Agent -> " +
-      userAgent +
-      "</h3> <h3>Param Name -> " +
-      paramName +
-      "</h3>"
-  );
+  res.writeHead("200", { "Content-Type": "text/html; charset=utf8" });
+  res.write("<h1>Express 서버에서 응답한 결과입니다.</h1>");
+  res.write("<div><p>User-Agent : " + userAgent + "</p></div>");
+  res.write("<div><p>Param name : " + paramName + "</p></div>");
+  res.end();
+});
+
+app.use("/", function (req, res, next) {
+  console.log("두 번째 미들웨어 호출됨");
+
+  res.writeHead("200", { "Content-Type": "text/html; charset=utf8" });
+  res.end("<h1>Express 서버에서 응답한 결과입니다 : " + req.user + "</h1>");
 });
 
 http.createServer(app).listen(app.get("port"), function () {
