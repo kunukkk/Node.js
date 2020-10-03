@@ -48,7 +48,7 @@ app.use(
 var MongoClient = require("mongodb").MongoClient;
 
 // 데이터베이스 객체를 위한 변수 선언
-var database;
+var db;
 
 //데이터베이스에 연결
 function connectDB() {
@@ -56,13 +56,13 @@ function connectDB() {
   var databaseUrl = "mongodb://localhost:27017/local";
 
   // 데이터베이스 연결
-  MongoClient.connect(databaseUrl, function (err, db) {
+  MongoClient.connect(databaseUrl, function (err, database) {
     if (err) throw err;
 
     console.log("데이터베이스에 연결되었습니다. : " + databaseUrl);
 
     // database 변수에 할당
-    database = db;
+    db = database.db("local");
   });
 }
 
