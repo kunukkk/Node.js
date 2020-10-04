@@ -19,4 +19,5 @@ let Users3 = Users2.slice(1);
 console.log("slice()로 잘라낸 후 Users3");
 console.dir(Users3);
 
+console.log("slice()후 Users의 상태");
 console.dir(Users);
