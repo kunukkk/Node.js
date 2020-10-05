@@ -1,32 +1,16 @@
-let express = require("express");
-let http = require("http");
+const express = require("express");
+const http = require("http");
 
-let app = express();
+const app = express();
 
 app.set("port", process.env.PORT || 3000);
 
 app.use(function (req, res, next) {
-  console.log("첫번째 미들웨어 호출됨");
+  console.log("첫 번째 미들웨어에서 요청을 처리함");
 
-  req.user = "mike";
-
-  next();
-});
-
-app.use("/", function (req, res, next) {
-  console.log("두번째 미들웨어 호출됨");
-
-  // res.writeHead(200, { "Content-Type": "text/html; charset=utf8" });
-  // res.send("<h1>Express 서버에서 응답한 결과입니다 : " + req.user + "</h1>");
-  let person = { name: "소녀시대", age: 20 };
-  // res.send(person);
-
-  let personStr = JSON.stringify(person);
-  // res.send(personStr);
-
-  res.writeHead(200, { "Content-Type": "application/json; charset=utf8" });
-  res.write(personStr);
-  res.end();
+  // send() : 클라이언트에 응답 데이터를 보냅니다.
+  // 전달할 수 있는 데이터는 HTMl 문자열, Buffer 객체, JSON 객체, JSON 배열입니다.
+  res.send({ name: "소녀시대", age: 20 });
 });
 
 http.createServer(app).listen(app.get("port"), function () {

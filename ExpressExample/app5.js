@@ -1,21 +1,15 @@
-let express = require("express");
-let http = require("http");
+const express = require("express");
+const http = require("http");
 
-let app = express();
+const app = express();
 
 app.set("port", process.env.PORT || 3000);
 
 app.use(function (req, res, next) {
   console.log("첫 번째 미들웨어에서 요청을 처리함");
 
+  // redirect() : 웹 페이지 경로를 강제로 이동시킵니다.
   res.redirect("http://google.co.kr");
-});
-
-app.use("/", function (req, res, next) {
-  console.log("두 번째 미들웨어 호출됨");
-
-  res.writeHead("200", { "Content-Type": "text/html; charset=utf8" });
-  res.end("<h1>Express 서버에서 응답한 결과입니다 : " + req.user + "</h1>");
 });
 
 http.createServer(app).listen(app.get("port"), function () {

@@ -1,29 +1,29 @@
 // Express 기본 모듈 불러오기
-var express = require("express"),
+const express = require("express"),
   http = require("http"),
   path = require("path");
 
 // Express의 미들웨어 불러오기
-var bodyParser = require("body-parser"),
+const bodyParser = require("body-parser"),
   cookieParser = require("cookie-parser"),
   static = require("serve-static"),
   errorHandler = require("errorhandler");
 
 // 에러 핸들러 모듈 사용
-var expressErrorHandler = require("express-error-handler");
+const expressErrorHandler = require("express-error-handler");
 
 // Session 미들웨어 불러오기
-var expressSession = require("express-session");
+const expressSession = require("express-session");
 
 // 파일 업로드용 미들웨어
-var multer = require("multer");
-var fs = require("fs");
+const multer = require("multer");
+const fs = require("fs");
 
 //클라이언트에서 ajax로 요청 시 CORS(다중 서버 접속) 지원
-var cors = require("cors");
+const cors = require("cors");
 
 // 익스프레스 객체 생성
-var app = express();
+const app = express();
 
 // 기본 속성 설정
 app.set("port", process.env.PORT || 3000);
@@ -55,7 +55,7 @@ app.use(cors());
 
 //multer 미들웨어 사용 : 미들웨어 사용 순서 중요  body-parser -> multer -> router
 // 파일 제한 : 10개, 1G
-var storage = multer.diskStorage({
+let storage = multer.diskStorage({
   destination: function (req, file, callback) {
     callback(null, "uploads");
   },
@@ -64,7 +64,7 @@ var storage = multer.diskStorage({
   },
 });
 
-var upload = multer({
+let upload = multer({
   storage: storage,
   limits: {
     files: 10,
@@ -73,7 +73,7 @@ var upload = multer({
 });
 
 // 라우터 사용하여 라우팅 함수 등록
-var router = express.Router();
+const router = express.Router();
 
 // 파일 업로드 라우팅 함수 - 로그인 후 세션 저장함
 router
@@ -82,14 +82,14 @@ router
     console.log("/process/photo 호출됨.");
 
     try {
-      var files = req.files;
+      let files = req.files;
 
       console.dir("#===== 업로드된 첫번째 파일 정보 =====#");
       console.dir(req.files[0]);
       console.dir("#=====#");
 
       // 현재의 파일 정보를 저장할 변수 선언
-      var originalname = "",
+      let originalname = "",
         filename = "",
         mimetype = "",
         size = 0;
@@ -98,7 +98,7 @@ router
         // 배열에 들어가 있는 경우 (설정에서 1개의 파일도 배열에 넣게 했음)
         console.log("배열에 들어있는 파일 갯수 : %d", files.length);
 
-        for (var index = 0; index < files.length; index++) {
+        for (let index = 0; index < files.length; index++) {
           originalname = files[index].originalname;
           filename = files[index].filename;
           mimetype = files[index].mimetype;
@@ -147,7 +147,7 @@ router
 app.use("/", router);
 
 // 404 에러 페이지 처리
-var errorHandler = expressErrorHandler({
+let errorHandler = expressErrorHandler({
   static: {
     404: "./public/404.html",
   },

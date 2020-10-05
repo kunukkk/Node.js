@@ -1,21 +1,23 @@
 // Express 기본 모듈 불러오기
-var express = require("express"),
+const express = require("express"),
   http = require("http"),
   path = require("path");
 
 // Express의 미들웨어 불러오기
-var bodyParser = require("body-parser"),
+const bodyParser = require("body-parser"),
   cookieParser = require("cookie-parser"),
   static = require("serve-static");
 
 // 에러 핸들러 모듈 사용
-var expressErrorHandler = require("express-error-handler");
+const expressErrorHandler = require("express-error-handler");
 
 // Session 미들웨어 불러오기
-var expressSession = require("express-session");
+// express-session : 세션도 상태 정보를 저장하는 역할을 하지만
+//                   쿠키와 달리 서버 쪽에 저장된다.
+const expressSession = require("express-session");
 
 // 익스프레스 객체 생성
-var app = express();
+const app = express();
 
 // 기본 속성 설정
 app.set("port", process.env.PORT || 3000);
@@ -41,14 +43,14 @@ app.use(
 );
 
 // 라우터 사용하여 라우팅 함수 등록
-var router = express.Router();
+const router = express.Router();
 
 // 로그인 라우팅 함수 - 로그인 후 세션 저장함
 router.route("/process/login").post(function (req, res) {
   console.log("/process/login 호출됨.");
 
-  var paramId = req.body.id || req.query.id;
-  var paramPassword = req.body.password || req.query.password;
+  let paramId = req.body.id || req.query.id;
+  let paramPassword = req.body.password || req.query.password;
 
   if (req.session.user) {
     // 이미 로그인된 상태
@@ -110,7 +112,7 @@ router.route("/process/product").get(function (req, res) {
 app.use("/", router);
 
 // 404 에러 페이지 처리
-var errorHandler = expressErrorHandler({
+const errorHandler = expressErrorHandler({
   static: {
     404: "./public/404.html",
   },

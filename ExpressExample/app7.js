@@ -6,6 +6,8 @@ const express = require("express"),
 // Express의 미들웨어 불러오기
 const bodyParser = require("body-parser"),
   static = require("serve-static");
+// static : 특정 폴더의 파일들을 특정 패스로 접근할 수 있도록 만들어준다.
+// body-parser : POST로 요청했을 때 요청 파라미터를 확인할 수 있다.
 
 // Express 객체 생성
 const app = express();
@@ -13,12 +15,12 @@ const app = express();
 // 기본 속성 설정
 app.set("port", process.env.PORT || 3000);
 
-// body-parser를 사요해 application/x-www-form-urlencoded 파싱
+// body-parser를 사용해 application/x-www-form-urlencoded 파싱
 app.use(bodyParser.urlencoded({ extended: false }));
-
 // body-parser를 사용해 application/json 파싱
 app.use(bodyParser.json());
 
+// 접근 패스 설정
 app.use("/public", static(path.join(__dirname, "public")));
 
 // 미들웨어에서 파라미터 확인
