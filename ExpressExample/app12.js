@@ -37,8 +37,13 @@ app.use(cookieParser());
 app.use(
   expressSession({
     secret: "my key",
+    // 쿠키를 임의로 변조하는것을 방지하기 위한 값
+    // 이 값을 통하여 세션을 암호화 하여 저장
     resave: true,
+    // 세션을 언제나 저장할 지 (변경되지 않아도) 정하는 값
+    // express-session documentation에서는 이 값을 false 로 하는것을 권장
     saveUninitialized: true,
+    // 세션이 저장되기 전에 uninitialized 상태로 미리 만들어서 저장
   })
 );
 
@@ -67,6 +72,7 @@ router.route("/process/login").post(function (req, res) {
 
     res.writeHead("200", { "Content-Type": "text/html;charset=utf8" });
     res.write("<h1>로그인 성공</h1>");
+    res.write("<div><p>Param name : " + req.session.user.name + "</p></div>");
     res.write("<div><p>Param id : " + paramId + "</p></div>");
     res.write("<div><p>Param password : " + paramPassword + "</p></div>");
     res.write("<br><br><a href='/process/product'>상품 페이지로 이동하기</a>");

@@ -6,8 +6,7 @@ const express = require("express"),
 // Express의 미들웨어 불러오기
 const bodyParser = require("body-parser"),
   cookieParser = require("cookie-parser"),
-  static = require("serve-static"),
-  errorHandler = require("errorhandler");
+  static = require("serve-static");
 
 // 에러 핸들러 모듈 사용
 const expressErrorHandler = require("express-error-handler");

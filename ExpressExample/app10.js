@@ -16,7 +16,7 @@ const app = express();
 // 기본 속성 설정
 app.set("port", process.env.PORT || 3000);
 
-// body-parser를 사요해 application/x-www-form-urlencoded 파싱
+// body-parser를 사용해 application/x-www-form-urlencoded 파싱
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // body-parser를 사용해 application/json 파싱
