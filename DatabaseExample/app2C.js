@@ -62,7 +62,7 @@ function connectDB() {
     console.log("데이터베이스에 연결되었습니다. : " + databaseUrl);
 
     // database 변수에 할당
-    database = db;
+    database = db.db("local");
   });
 }
 
