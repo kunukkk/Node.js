@@ -194,7 +194,6 @@ let listuser = function(req, res) {
 	
 };
 
-
 //사용자를 인증하는 함수 : 아이디로 먼저 찾고 비밀번호를 그 다음에 비교하도록 함
 let authUser = function(database, id, password, callback) {
 	console.log('authUser 호출됨.');
@@ -231,7 +230,6 @@ let authUser = function(database, id, password, callback) {
 	});
 	
 }
-
 
 //사용자를 등록하는 함수
 let addUser = function(database, id, password, name, callback) {
