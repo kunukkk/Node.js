@@ -81,7 +81,7 @@ router.route('/').get(function(req, res) {
 });
 
 // 로그인 화면 - login.ejs 템플릿을 이용해 로그인 화면이 보이도록 함
-router.route('/login').get(function(req, res) {
+app.get('/login', function(req, res) {
 	console.log('/login 패스 요청됨.');
 	res.render('login.ejs', {message: req.flash('loginMessage')});
 });
@@ -89,14 +89,14 @@ router.route('/login').get(function(req, res) {
 // 사용자 인증 - POST로 요청받으면 패스포트를 이용해 인증함
 // 성공 시 /profile로 리다이렉트, 실패 시 /login으로 리다이렉트함
 // 인증 실패 시 검증 콜백에서 설정한 플래시 메시지가 응답 페이지에 전달되도록 함
-router.route('/login').post(passport.authenticate('local-login', {
+app.post('login', passport.authenticate('local-login', {
     successRedirect : '/profile', 
     failureRedirect : '/login', 
     failureFlash : true 
 }));
 
 // 회원가입 화면 - signup.ejs 템플릿을 이용해 회원가입 화면이 보이도록 함
-router.route('/signup').get(function(req, res) {
+app.get('/signup', function(req, res) {
 	console.log('/signup 패스 요청됨.');
 	res.render('signup.ejs', {message: req.flash('signupMessage')});
 });
@@ -104,7 +104,7 @@ router.route('/signup').get(function(req, res) {
 // 회원가입 - POST로 요청받으면 패스포트를 이용해 회원가입 유도함
 // 인증 확인 후, 성공 시 /profile 리다이렉트, 실패 시 /signup으로 리다이렉트함
 // 인증 실패 시 검증 콜백에서 설정한 플래시 메시지가 응답 페이지에 전달되도록 함
-router.route('/signup').post(passport.authenticate('local-signup', {
+app.post('/signup', passport.authenticate('local-signup', {
     successRedirect : '/profile', 
     failureRedirect : '/signup', 
     failureFlash : true 
@@ -135,7 +135,7 @@ router.route('/profile').get(function(req, res) {
 });
 
 // 로그아웃 - 로그아웃 요청 시 req.logout() 호출함
-router.route('/logout').get(function(req, res) {
+app.get('/logout', function(req, res) {
 	console.log('/logout 패스 요청됨.');
     
 	req.logout();
