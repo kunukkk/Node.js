@@ -1,0 +1,203 @@
+[33mcommit 8d1b3a67aa39dc74c2ae73502746661c7b8f2a28[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: kunukkk <showklee@naver.com>
+Date:   Wed Oct 14 20:42:12 2020 +0900
+
+    20/10/14_add
+    
+    user authentication with passport
+
+[33mcommit f21b24c914598e821a7e2a51a6fa0acbb8a1a47c[m
+Author: kunukkk <showklee@naver.com>
+Date:   Tue Oct 13 21:45:44 2020 +0900
+
+    20/10/13_add
+    
+    view template : pug
+
+[33mcommit f09c66cf84200c39fd17f78d375b31b91122dcf8[m
+Author: kunukkk <showklee@naver.com>
+Date:   Tue Oct 13 21:45:08 2020 +0900
+
+    20/10/13_update
+    
+    view template : ejs
+
+[33mcommit f7d9c0203d2d2329b4b050ab8ad847e8200e997d[m
+Author: kunukkk <showklee@naver.com>
+Date:   Tue Oct 13 19:12:31 2020 +0900
+
+    20/10/13_add
+    
+    view template : ejs
+
+[33mcommit a24aa7bf8faca8b60887f6eaa7c0b44ff33a0a66[m
+Author: kunukkk <showklee@naver.com>
+Date:   Mon Oct 12 18:29:51 2020 +0900
+
+    20/10/12_review
+    
+    20/10/12_review
+
+[33mcommit 35fe8d87b343b309336e8b524929d5bc2fad8cdd[m
+Author: kunukkk <showklee@naver.com>
+Date:   Sun Oct 11 22:01:41 2020 +0900
+
+    20/10/11_add
+    
+    modularization of the express project
+
+[33mcommit da1f579f4e8a2cd3bb18dd5c5f096e17daac6f48[m
+Author: kunukkk <showklee@naver.com>
+Date:   Sat Oct 10 16:48:07 2020 +0900
+
+    20/10/10_add
+    
+    modularization of the express project
+
+[33mcommit e42c600da3f169c5567bed949a4be87a086b7e89[m
+Author: kunukkk <showklee@naver.com>
+Date:   Sat Oct 10 14:05:04 2020 +0900
+
+    20/10/10_add
+    
+    use database with MySQL
+
+[33mcommit 6009dc4f4ce09074543df24f9fa6e335c49ca7fc[m
+Author: kunukkk <showklee@naver.com>
+Date:   Fri Oct 9 19:21:10 2020 +0900
+
+    20/10/09_add
+    
+    use database with MongoDB
+
+[33mcommit 434549bb126adbc953f9aec2659d93f694f1d83e[m
+Author: kunukkk <showklee@naver.com>
+Date:   Fri Oct 9 19:18:58 2020 +0900
+
+    20/10/08_review
+    
+    20/10/08_review
+
+[33mcommit 33c84b055d4f520639ce4cbd61da1b1a143399cd[m
+Author: kunukkk <showklee@naver.com>
+Date:   Wed Oct 7 10:53:34 2020 +0900
+
+    20/10/07_review
+    
+    20/10/07_review
+
+[33mcommit 226386cabfb2a52cec9a85df5b9924ac6e3b1362[m
+Author: kunukkk <showklee@naver.com>
+Date:   Tue Oct 6 21:54:25 2020 +0900
+
+    20/10/16_review
+    
+    20/10/16_review
+
+[33mcommit 16c26ba79c26bba7d3cee99c62aea8a254e09a2b[m
+Author: kunukkk <showklee@naver.com>
+Date:   Mon Oct 5 17:05:13 2020 +0900
+
+    20/10/05_review
+    
+    20/10/05_review
+
+[33mcommit 6f0a166f1406bdd11b53cdba19b00acc1807d0f4[m
+Author: kunukkk <showklee@naver.com>
+Date:   Sun Oct 4 20:38:48 2020 +0900
+
+    20/10/04_review
+    
+    20/10/04_review
+
+[33mcommit acbd64f07ec20853b8836593a3e52bd9776d89bd[m
+Author: kunukkk <showklee@naver.com>
+Date:   Sat Oct 3 19:39:06 2020 +0900
+
+    20/10/03_day_8
+    
+    use database with MongoDB
+
+[33mcommit a10bdf5de21e221e4dd9a70955bdce7bda46c4d1[m
+Author: kunukkk <showklee@naver.com>
+Date:   Wed Sep 30 19:03:26 2020 +0900
+
+    20/09/30_day_7
+    
+    use database with MongoDB
+
+[33mcommit b3876b19824db62f64a535e637ef13d043a29195[m
+Author: kunukkk <showklee@naver.com>
+Date:   Tue Sep 29 17:46:53 2020 +0900
+
+    20/09/29_day_6
+    
+    use database with MongoDB
+
+[33mcommit 27087fda877dee730314990a31ad820bdb44e839[m
+Author: kunukkk <showklee@naver.com>
+Date:   Mon Sep 28 20:17:43 2020 +0900
+
+    20/09/28_day_6
+    
+    use database with MongoDB
+
+[33mcommit caba048827b5cc7938eb10dcc335376b2b196de5[m
+Author: kunukkk <showklee@naver.com>
+Date:   Sun Sep 27 21:01:43 2020 +0900
+
+    20/09/27_day_5
+    
+    create web server_2
+
+[33mcommit bc9ab440bda75707a2ccd45aadbc1495ef722c8e[m
+Author: kunukkk <showklee@naver.com>
+Date:   Mon Sep 21 22:47:47 2020 +0900
+
+    2020/09/21_day_4
+    
+    create web server_1
+
+[33mcommit 1d3c54fd5d6b3f6578d3abd8a4290dba219f32c4[m
+Author: kunukkk <showklee@naver.com>
+Date:   Mon Sep 21 22:30:43 2020 +0900
+
+    Update ch04_test14.js
+
+[33mcommit 1d7bca32fed6ccf6843241619d95c27398b8d3c5[m
+Author: kunukkk <showklee@naver.com>
+Date:   Sun Sep 20 21:20:09 2020 +0900
+
+    2020/09/20_day_3
+    
+    node basic functions
+
+[33mcommit a0e89b18d1ea3cf662fa5eb6956b9c864e5330ac[m
+Author: kunukkk <showklee@naver.com>
+Date:   Fri Sep 18 23:14:06 2020 +0900
+
+    add_modules
+    
+    add_modules
+
+[33mcommit ae3bf0c97b9382387b085beb5887158ff989bd5a[m
+Author: kunukkk <showklee@naver.com>
+Date:   Fri Sep 18 23:13:34 2020 +0900
+
+    2020/09/18_day_2
+    
+    Javascript of node.js
+
+[33mcommit c452737cd2755b6baee3308e766835e210f6246a[m
+Author: kunukkk <showklee@naver.com>
+Date:   Thu Sep 17 19:52:20 2020 +0900
+
+    2020/09/17_day_1
+    
+    chapter02_simple look around node.js
+
+[33mcommit dfa6666208e4f101989ff5f0828ea8ac1e127741[m
+Author: kunukkk <showklee@naver.com>
+Date:   Thu Sep 17 19:46:51 2020 +0900
+
+    Initial commit
