@@ -11,6 +11,9 @@ server.listen(port, host, 50000, function () {
 });
 
 // 클라이언트 연결 이벤트 처리
+// 연결이 만들어져 콜백 함수가 호출될 때는 socket 객체가 파라미터로 전달됨
+// socket 객체는 클라이언트 연결 정보를 담고 있으므로 address() 메소드를 호출하여
+// 클라이언트의 IP와 포트 정보를 확인할 수 있음
 server.on("connection", function (socket) {
   let addr = socket.address();
   console.log("클라이언트가 접속했습니다. : %s, %d", addr.address, addr.port);

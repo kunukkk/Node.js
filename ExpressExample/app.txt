@@ -1,0 +1,7 @@
+set(name, value) : 서버 설정을 위한 속성을 지정합니다. set() 메소드로 지정한 속성으 get() 메소드로 꺼내어 확인할 수 있습니다.
+
+get(name) : 서버 설정을 위해 지정한 속성을 꺼내 옵니다.
+
+use([path], function, [function...]) : 미들웨어 함수를 사용합니다.
+
+get([path], function) : 특정 패스로 요청된 정보를 처리합니다.
