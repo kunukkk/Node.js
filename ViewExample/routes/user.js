@@ -37,6 +37,7 @@ let login = function(req, res) {
 				// 뷰 템플레이트를 이용하여 렌더링한 후 전송
 				let context = {userid:paramId, username:username};
 				req.app.render('login_success', context, function(err, html) {
+					// 'login_success' ==> login_success.ejs
 					if (err) {
                         console.error('뷰 렌더링 중 에러 발생 : ' + err.stack);
                 
