@@ -62,8 +62,8 @@ app.use(expressSession({
 
 //===== Passport 사용 설정 =====//
 // Passport의 세션을 사용할 때는 그 전에 Express의 세션을 사용하는 코드가 있어야 함
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.initialize()); // passport 초기화
+app.use(passport.session()); // 로그인 세션 유지
 app.use(flash());
 
  
