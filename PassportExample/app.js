@@ -204,7 +204,8 @@ passport.use('local-signup', new LocalStrategy({
 		        if (user) {
 		        	console.log('기존에 계정이 있음.');
 		            return done(null, false, req.flash('signupMessage', '계정이 이미 있습니다.'));  // 검증 콜백에서 두 번째 파라미터의 값을 false로 하여 인증 실패한 것으로 처리
-		        } else {
+				}
+				else {
 		        	// 모델 인스턴스 객체 만들어 저장
 		        	let user = new database.UserModel({'email':email, 'password':password, 'name':paramName});
 		        	user.save(function(err) {
