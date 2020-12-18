@@ -5,7 +5,7 @@ function add(a, b, callback) {
   let count = 0;
   let history = function () {
     count++;
-    return count + ":" + a + " + " + b + " = " + result;
+    return count + ": " + a + " + " + b + " = " + result;
   };
 
   return history;

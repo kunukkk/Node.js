@@ -1,0 +1,4 @@
+콜백 함수(callback function)
+
+비동기 프로그래밍(Non-Blocking Programming)방식으로 코드를 만들 때 사용
+콜백 함수는 함수가 실행되는 중간에 호출되어 상태 정보를 전달하거나 결과 값을 처리하는데 사용
