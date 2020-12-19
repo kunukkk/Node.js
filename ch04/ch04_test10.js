@@ -12,7 +12,8 @@ console.log("두 번째 버퍼의 문자열 : %s", buffer2.toString());
 console.log("버퍼 객체의 타입 : %s", Buffer.isBuffer(buffer1));
 
 //버퍼 객체에 들어 있는 문자열 데이터를 문자열 변수로 만듭니다.
-let byteLen = Buffer.byteLength(output); // 10
+let byteLen = Buffer.byteLength(output);
+console.log("byteLen: " + byteLen);
 let str1 = buffer1.toString("utf8", 0, byteLen);
 let str2 = buffer2.toString("utf8");
 
