@@ -27,7 +27,7 @@ server.on("request", function (req, res) {
   let infile = fs.createReadStream(filename, { flags: "r" });
 
   // pipe()로 연결하여 알아서 처리하도록 설정하기
-  // pipe()로 연결 시 코드가 간결하지만 여러 가지 문제 발생 가능성 있음
+  // pipe()로 연결 시 코드가 간결하지만 헤더를 설정할 수 없는 등의 제약 발생
   infile.pipe(res);
 });
 

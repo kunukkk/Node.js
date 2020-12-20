@@ -6,6 +6,8 @@ let options = {
   path: "/",
 };
 
+// GET: 다른 사이트에 데이터 요청
+//      첫번째 파라미터는 다른 사이트의 정보
 let req = http.get(options, function (res) {
   // 응답 처리
   let resData = "";

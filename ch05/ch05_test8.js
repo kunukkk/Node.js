@@ -20,6 +20,7 @@ let req = http.request(opts, function (res) {
   });
 });
 
+// POST 방식에서는 헤더와 본문을 모두 직접 설정
 opts.hearders["Content-Type"] = "application/x-www-form-urlencoded";
 req.data = "q=actor";
 opts.hearders["Content-Length"] = req.data.length;
