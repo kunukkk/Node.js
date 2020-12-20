@@ -1,9 +1,9 @@
-send([body]) : 클라이언트에 응답 데이터를 보냅니다. 전달할 수 있는 데이터는 HTML 문자열, Buffer 객체, JSON 객체, JSON 배열입니다.
+res.send([body]) : 클라이언트에 응답 데이터를 보냅니다. 전달할 수 있는 데이터는 HTML 문자열, Buffer 객체, JSON 객체, JSON 배열입니다.
 
-status(code) : HTTP 상태 코드를 반환합니다. 상태 코드는 end() 나 send() 같은 전송 메소드를 추가로 호출해야 전송할 수 있습니다.
+res.status(code) : HTTP 상태 코드를 반환합니다. 상태 코드는 end() 나 send() 같은 전송 메소드를 추가로 호출해야 전송할 수 있습니다.
 
-sendStatus(statusCode) : HTTP 상태 코드를 반환합니다. 상태 코드는 상태 메시지와 함께 전송됩니다.
+res.sendStatus(statusCode) : HTTP 상태 코드를 반환합니다. 상태 코드는 상태 메시지와 함께 전송됩니다.
 
-redirect([status], path) : 웹 페이지 경로를 강제로 이동시킵니다.
+res.redirect([status], path) : 웹 페이지 경로를 강제로 이동시킵니다.
 
-render(view, [locals], [callback]) : 뷰 엔진을 사용해 문서를 만든 후 전송합니다.
+res.render(view, [locals], [callback]) : 뷰 엔진을 사용해 문서를 만든 후 전송합니다.

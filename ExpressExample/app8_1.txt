@@ -1,0 +1,21 @@
+라우터 미들웨어(Router middleware): 요청 url이 무엇인지 일일이 확인해야 하는 번거로움을 해결
+
+
+// 라우터 객체 참조
+var router = express.Router();
+
+// 라우팅 함수 등록
+router.route('/process/login').get(...);
+router.route('/process/login').post(...);
+...
+
+// 라우터 객체를 app 객체에 등록
+app.use('/', router);
+
+
+요청 패스를 라우터 객체에 등록할 때 사용하는 메소드
+get(callback): GET 방식으로 특정 패스 요청이 발생했을 때 사용할 콜백 함수를 지정
+post(callback): POST 방식으로 특정 패스 요청이 발생했을 때 사용할 콜백 함수를 지정
+put(callback): PUT 방식으로 특정 패스 요청이 발생했을 때 사용할 콜백 함수를 지정
+delete(callback): DELETE 방식으로 특정 패스 요청이 발생했을 때 사용할 콜백 함수를 지정
+all(callback): 모든 요청 방식을 처리하며, 특정 패스 요청이 발생했을 때 사용할 콜백 함수를 지정
