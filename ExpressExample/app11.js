@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 
 app.use("/public", static(path.join(__dirname, "public")));
 
-// cookie-parser 설정
+// cookie-parser설정: 클라이언트 웹 브라우저에 저장되는 정보로서 일정 기간 동안 저장하고 싶을 때 사용
 app.use(cookieParser());
 
 // 라우터 사용하여 라우팅 함수 등록
@@ -49,7 +49,7 @@ router.route("/process/setUserCookie").get(function (req, res) {
     authorized: true,
   });
 
-  // redirect로 응답
+  // redirect로 응답 >> setUserCookie -> showCookie
   res.redirect("/process/showCookie");
 });
 

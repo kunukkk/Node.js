@@ -12,8 +12,10 @@ const bodyParser = require("body-parser"),
 const expressErrorHandler = require("express-error-handler");
 
 // Session 미들웨어 불러오기
-// express-session : 세션도 상태 정보를 저장하는 역할을 하지만
-//                   쿠키와 달리 서버 쪽에 저장된다.
+// express-session : 세션도 상태 정보를 저장하는 역할을 하지만 쿠키와 달리 서버 쪽에 저장된다.
+//                   대표적인 예로는 로그인을 했을 때 저장되는 세션
+/* 사용자가 로그인하면 세션이 만들어지고 로그아웃하면 세션이 삭제되는 기능을 만들면
+   사용자가 로그인하기 전에는 접근이 제한된 페이지를 보지 못하도록 설정할 수 있음 */
 const expressSession = require("express-session");
 
 // 익스프레스 객체 생성
@@ -31,6 +33,7 @@ app.use(bodyParser.json());
 app.use("/public", static(path.join(__dirname, "public")));
 
 // cookie-parser 설정
+// 세션을 사용할때는 쿠키도 같이 사용함
 app.use(cookieParser());
 
 // 세션 설정
@@ -62,7 +65,8 @@ router.route("/process/login").post(function (req, res) {
     console.log("이미 로그인되어 상품 페이지로 이동합니다.");
 
     res.redirect("/public/product.html");
-  } else {
+  }
+  else {
     // 세션 저장
     req.session.user = {
       id: paramId,
