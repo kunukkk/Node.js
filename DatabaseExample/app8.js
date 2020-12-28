@@ -253,7 +253,7 @@ let addUser = function (id, name, age, password, callback) {
     let data = { id: id, name: name, age: age, password: password };
 
     // SQL 문을 실행함
-    let exec = conn.query("insert into users set ?", data, function (
+    let exec = conn.query("insert into users set ?", data, function ( // ?: id='test01', name='김준수', age='20', password='123456'
       err,
       result
     ) {
