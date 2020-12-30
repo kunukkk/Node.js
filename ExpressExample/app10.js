@@ -29,6 +29,7 @@ const router = express.Router();
 
 // 라우팅 함수 등록
 router.route("/process/users/:id").get(function (req, res) {
+  // :id: 토큰
   // 이렇게 토큰을 사용하면 사용자 리스트 중에서 특정 사용자 정보를 id값으로 조회하기 편리함
   console.log("/process/users/:id 처리함");
 

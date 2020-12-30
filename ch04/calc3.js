@@ -10,7 +10,8 @@ let Calc = function () {
   });
 };
 
-// prototype 상속을 연결해준다.
+// process 객체에는 이미 내부적으로 EventEmitter를 상속받지만
+// 새로운 객체를 생성할 경우 EventEmitter를 상속해주어야 한다.
 util.inherits(Calc, EventEmitter);
 
 Calc.prototype.add = function (a, b) {
