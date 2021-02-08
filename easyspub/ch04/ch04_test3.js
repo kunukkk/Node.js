@@ -1,9 +1,9 @@
-process.on("abc", function (count) {
-  console.log("abc 이벤트 발생함 : %s", count);
+process.on('abc', function (count) {
+  console.log('abc 이벤트 발생함 : %s', count);
 });
 
 setTimeout(function () {
-  console.log("2초 후에 tick 이벤트 전달 시도함.");
+  console.log('2초 후에 tick 이벤트 전달 시도함.');
 
-  process.emit("abc", "2");
+  process.emit('abc', '2');
 }, 2000);
