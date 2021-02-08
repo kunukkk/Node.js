@@ -4,6 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const session = require("express-session");
+const flash = require("connect-flash");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -35,8 +36,7 @@ app.use(
     },
   })
 );
-app.use(express.static(path.join(__dirname, "public")));
-
+app.use(flash());
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
