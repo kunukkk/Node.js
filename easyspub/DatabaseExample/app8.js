@@ -1,29 +1,29 @@
 // Express 기본 모듈 불러오기
-const express = require("express"),
-  http = require("http"),
-  path = require("path");
+const express = require('express'),
+  http = require('http'),
+  path = require('path');
 
 // Express의 미들웨어 불러오기
-const bodyParser = require("body-parser"),
-  cookieParser = require("cookie-parser"),
-  static = require("serve-static");
+const bodyParser = require('body-parser'),
+  cookieParser = require('cookie-parser'),
+  static = require('serve-static');
 
 // 에러 핸들러 모듈 사용
-const expressErrorHandler = require("express-error-handler");
+const expressErrorHandler = require('express-error-handler');
 
 // Session 미들웨어 불러오기
-const expressSession = require("express-session");
+const expressSession = require('express-session');
 
 //===== MySQL 데이터베이스를 사용할 수 있도록 하는 mysql 모듈 불러오기 =====//
-const mysql = require("mysql");
+const mysql = require('mysql');
 
 //===== MySQL 데이터베이스 연결 설정 =====//
-let pool = mysql.createPool({
+const pool = mysql.createPool({
   connectionLimit: 10,
-  host: "localhost",
-  user: "root",
-  password: "10200711",
-  database: "test",
+  host: 'localhost',
+  user: 'root',
+  password: '10200711',
+  database: 'test',
   debug: false,
 });
 
@@ -31,7 +31,7 @@ let pool = mysql.createPool({
 const app = express();
 
 // 설정 파일에 들어있는 port 정보 사용하여 포트 설정
-app.set("port", process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3000);
 
 // body-parser를 이용해 application/x-www-form-urlencoded 파싱
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -40,7 +40,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // public 폴더를 static으로 오픈
-app.use("/public", static(path.join(__dirname, "public")));
+app.use('/public', static(path.join(__dirname, 'public')));
 
 // cookie-parser 설정
 app.use(cookieParser());
@@ -48,10 +48,10 @@ app.use(cookieParser());
 // 세션 설정
 app.use(
   expressSession({
-    secret: "my key",
+    secret: 'my key',
     resave: true,
     saveUninitialized: true,
-  })
+  }),
 );
 
 //===== 라우팅 함수 등록 =====//
@@ -60,25 +60,25 @@ app.use(
 const router = express.Router();
 
 // 로그인 처리 함수
-router.route("/process/login").post(function (req, res) {
-  console.log("/process/login 호출됨.");
+router.route('/process/login').post(function (req, res) {
+  console.log('/process/login 호출됨.');
 
   // 요청 파라미터 확인
-  let paramId = req.body.id || req.query.id;
-  let paramPassword = req.body.password || req.query.password;
+  const paramId = req.body.id || req.query.id;
+  const paramPassword = req.body.password || req.query.password;
 
-  console.log("요청 파라미터 : " + paramId + ", " + paramPassword);
+  console.log('요청 파라미터 : ' + paramId + ', ' + paramPassword);
 
   // pool 객체가 초기화된 경우, authUser 함수 호출하여 사용자 인증
   if (pool) {
     authUser(paramId, paramPassword, function (err, rows) {
       // 에러 발생 시, 클라이언트로 에러 전송
       if (err) {
-        console.error("사용자 로그인 중 에러 발생 : " + err.stack);
+        console.error('사용자 로그인 중 에러 발생 : ' + err.stack);
 
-        res.writeHead("200", { "Content-Type": "text/html;charset=utf8" });
-        res.write("<h2>사용자 로그인 중 에러 발생</h2>");
-        res.write("<p>" + err.stack + "</p>");
+        res.writeHead('200', { 'Content-Type': 'text/html;charset=utf8' });
+        res.write('<h2>사용자 로그인 중 에러 발생</h2>');
+        res.write('<p>' + err.stack + '</p>');
         res.end();
 
         return;
@@ -89,35 +89,35 @@ router.route("/process/login").post(function (req, res) {
         console.dir(rows);
 
         // 조회 결과에서 사용자 이름 확인
-        let username = rows[0].name;
+        const username = rows[0].name;
 
-        res.writeHead("200", { "Content-Type": "text/html;charset=utf8" });
-        res.write("<h1>로그인 성공</h1>");
-        res.write("<div><p>사용자 아이디 : " + paramId + "</p></div>");
-        res.write("<div><p>사용자 이름 : " + username + "</p></div>");
+        res.writeHead('200', { 'Content-Type': 'text/html;charset=utf8' });
+        res.write('<h1>로그인 성공</h1>');
+        res.write('<div><p>사용자 아이디 : ' + paramId + '</p></div>');
+        res.write('<div><p>사용자 이름 : ' + username + '</p></div>');
         res.write("<br><br><a href='/public/login2.html'>다시 로그인하기</a>");
         res.end();
       } else {
         // 조회된 레코드가 없는 경우 실패 응답 전송
-        res.writeHead("200", { "Content-Type": "text/html;charset=utf8" });
-        res.write("<h1>로그인  실패</h1>");
-        res.write("<div><p>아이디와 패스워드를 다시 확인하십시오.</p></div>");
+        res.writeHead('200', { 'Content-Type': 'text/html;charset=utf8' });
+        res.write('<h1>로그인  실패</h1>');
+        res.write('<div><p>아이디와 패스워드를 다시 확인하십시오.</p></div>');
         res.write("<br><br><a href='/public/login2.html'>다시 로그인하기</a>");
         res.end();
       }
     });
   } else {
     // 데이터베이스 객체가 초기화되지 않은 경우 실패 응답 전송
-    res.writeHead("200", { "Content-Type": "text/html;charset=utf8" });
-    res.write("<h2>데이터베이스 연결 실패</h2>");
-    res.write("<div><p>데이터베이스에 연결하지 못했습니다.</p></div>");
+    res.writeHead('200', { 'Content-Type': 'text/html;charset=utf8' });
+    res.write('<h2>데이터베이스 연결 실패</h2>');
+    res.write('<div><p>데이터베이스에 연결하지 못했습니다.</p></div>');
     res.end();
   }
 });
 
 // 사용자 추가 라우팅 함수
-router.route("/process/adduser").post(function (req, res) {
-  console.log("/process/adduser 호출됨.");
+router.route('/process/adduser').post(function (req, res) {
+  console.log('/process/adduser 호출됨.');
 
   let paramId = req.body.id || req.query.id;
   let paramPassword = req.body.password || req.query.password;
@@ -125,29 +125,19 @@ router.route("/process/adduser").post(function (req, res) {
   let paramAge = req.body.age || req.query.age;
 
   console.log(
-    "요청 파라미터 : " +
-      paramId +
-      ", " +
-      paramPassword +
-      ", " +
-      paramName +
-      ", " +
-      paramAge
+    '요청 파라미터 : ' + paramId + ', ' + paramPassword + ', ' + paramName + ', ' + paramAge,
   );
 
   // pool 객체가 초기화된 경우, addUser 함수 호출하여 사용자 추가
   if (pool) {
-    addUser(paramId, paramName, paramAge, paramPassword, function (
-      err,
-      addedUser
-    ) {
+    addUser(paramId, paramName, paramAge, paramPassword, function (err, addedUser) {
       // 동일한 id로 추가하려는 경우 에러 발생 - 클라이언트로 에러 전송
       if (err) {
-        console.error("사용자 추가 중 에러 발생 : " + err.stack);
+        console.error('사용자 추가 중 에러 발생 : ' + err.stack);
 
-        res.writeHead("200", { "Content-Type": "text/html;charset=utf8" });
-        res.write("<h2>사용자 추가 중 에러 발생</h2>");
-        res.write("<p>" + err.stack + "</p>");
+        res.writeHead('200', { 'Content-Type': 'text/html;charset=utf8' });
+        res.write('<h2>사용자 추가 중 에러 발생</h2>');
+        res.write('<p>' + err.stack + '</p>');
         res.end();
 
         return;
@@ -157,34 +147,34 @@ router.route("/process/adduser").post(function (req, res) {
       if (addedUser) {
         console.dir(addedUser);
 
-        console.log("inserted " + addedUser.affectedRows + " rows");
+        console.log('inserted ' + addedUser.affectedRows + ' rows');
 
-        let insertId = addedUser.insertId;
-        console.log("추가한 레코드의 아이디 : " + insertId);
+        const insertId = addedUser.insertId;
+        console.log('추가한 레코드의 아이디 : ' + insertId);
 
-        res.writeHead("200", { "Content-Type": "text/html;charset=utf8" });
-        res.write("<h2>사용자 추가 성공</h2>");
+        res.writeHead('200', { 'Content-Type': 'text/html;charset=utf8' });
+        res.write('<h2>사용자 추가 성공</h2>');
         res.end();
       } else {
-        res.writeHead("200", { "Content-Type": "text/html;charset=utf8" });
-        res.write("<h2>사용자 추가  실패</h2>");
+        res.writeHead('200', { 'Content-Type': 'text/html;charset=utf8' });
+        res.write('<h2>사용자 추가  실패</h2>');
         res.end();
       }
     });
   } else {
     // 데이터베이스 객체가 초기화되지 않은 경우 실패 응답 전송
-    res.writeHead("200", { "Content-Type": "text/html;charset=utf8" });
-    res.write("<h2>데이터베이스 연결 실패</h2>");
+    res.writeHead('200', { 'Content-Type': 'text/html;charset=utf8' });
+    res.write('<h2>데이터베이스 연결 실패</h2>');
     res.end();
   }
 });
 
 // 라우터 객체 등록
-app.use("/", router);
+app.use('/', router);
 
 // 사용자를 인증하는 함수
-let authUser = function (id, password, callback) {
-  console.log("authUser 호출됨 : " + id + ", " + password);
+const authUser = function (id, password, callback) {
+  console.log('authUser 호출됨 : ' + id + ', ' + password);
 
   // 커넥션 풀에서 연결 객체를 가져옴
   pool.getConnection(function (err, conn) {
@@ -195,35 +185,31 @@ let authUser = function (id, password, callback) {
       callback(err, null);
       return;
     }
-    console.log("데이터베이스 연결 스레드 아이디 : " + conn.threadId);
+    console.log('데이터베이스 연결 스레드 아이디 : ' + conn.threadId);
 
-    let columns = ["id", "name", "age"];
-    let tablename = "users";
+    const columns = ['id', 'name', 'age'];
+    const tablename = 'users';
 
     // SQL 문을 실행합니다.
-    let exec = conn.query(
-      "select ?? from ?? where id = ? and password = ?",
+    const exec = conn.query(
+      'select ?? from ?? where id = ? and password = ?',
       [columns, tablename, id, password],
       function (err, rows) {
         conn.release(); // 반드시 해제해야 함
-        console.log("실행 대상 SQL : " + exec.sql);
+        console.log('실행 대상 SQL : ' + exec.sql);
 
         if (rows.length > 0) {
-          console.log(
-            "아이디 [%s], 패스워드 [%s] 가 일치하는 사용자 찾음.",
-            id,
-            password
-          );
+          console.log('아이디 [%s], 패스워드 [%s] 가 일치하는 사용자 찾음.', id, password);
           callback(null, rows);
         } else {
-          console.log("일치하는 사용자를 찾지 못함.");
+          console.log('일치하는 사용자를 찾지 못함.');
           callback(null, null);
         }
-      }
+      },
     );
 
-    conn.on("error", function (err) {
-      console.log("데이터베이스 연결 시 에러 발생함.");
+    conn.on('error', function (err) {
+      console.log('데이터베이스 연결 시 에러 발생함.');
       console.dir(err);
 
       callback(err, null);
@@ -232,10 +218,8 @@ let authUser = function (id, password, callback) {
 };
 
 //사용자를 등록하는 함수
-let addUser = function (id, name, age, password, callback) {
-  console.log(
-    "addUser 호출됨 : " + id + ", " + password + ", " + name + ", " + age
-  );
+const addUser = function (id, name, age, password, callback) {
+  console.log('addUser 호출됨 : ' + id + ', ' + password + ', ' + name + ', ' + age);
 
   // 커넥션 풀에서 연결 객체를 가져옴
   pool.getConnection(function (err, conn) {
@@ -247,21 +231,18 @@ let addUser = function (id, name, age, password, callback) {
       callback(err, null);
       return;
     }
-    console.log("데이터베이스 연결 스레드 아이디 : " + conn.threadId);
+    console.log('데이터베이스 연결 스레드 아이디 : ' + conn.threadId);
 
     // 데이터를 객체로 만듦
-    let data = { id: id, name: name, age: age, password: password };
+    const data = { id: id, name: name, age: age, password: password };
 
     // SQL 문을 실행함
-    let exec = conn.query("insert into users set ?", data, function ( // ?: id='test01', name='김준수', age='20', password='123456'
-      err,
-      result
-    ) {
+    const exec = conn.query('insert into users set ?', data, function (err, result) {
       conn.release(); // 반드시 해제해야 함
-      console.log("실행 대상 SQL : " + exec.sql);
+      console.log('실행 대상 SQL : ' + exec.sql);
 
       if (err) {
-        console.log("SQL 실행 시 에러 발생함.");
+        console.log('SQL 실행 시 에러 발생함.');
         console.dir(err);
 
         callback(err, null);
@@ -272,8 +253,8 @@ let addUser = function (id, name, age, password, callback) {
       callback(null, result);
     });
 
-    conn.on("error", function (err) {
-      console.log("데이터베이스 연결 시 에러 발생함.");
+    conn.on('error', function (err) {
+      console.log('데이터베이스 연결 시 에러 발생함.');
       console.dir(err);
 
       callback(err, null);
@@ -284,7 +265,7 @@ let addUser = function (id, name, age, password, callback) {
 // 404 에러 페이지 처리
 let errorHandler = expressErrorHandler({
   static: {
-    404: "./public/404.html",
+    404: './public/404.html',
   },
 });
 
@@ -294,15 +275,15 @@ app.use(errorHandler);
 //===== 서버 시작 =====//
 
 // 프로세스 종료 시에 데이터베이스 연결 해제
-process.on("SIGTERM", function () {
-  console.log("프로세스가 종료됩니다.");
+process.on('SIGTERM', function () {
+  console.log('프로세스가 종료됩니다.');
 });
 
-app.on("close", function () {
-  console.log("Express 서버 객체가 종료됩니다.");
+app.on('close', function () {
+  console.log('Express 서버 객체가 종료됩니다.');
 });
 
 // Express 서버 시작
-http.createServer(app).listen(app.get("port"), function () {
-  console.log("서버가 시작되었습니다. 포트 : " + app.get("port"));
+http.createServer(app).listen(app.get('port'), function () {
+  console.log('서버가 시작되었습니다. 포트 : ' + app.get('port'));
 });
