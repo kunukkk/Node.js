@@ -2,8 +2,7 @@
 const user5 = require('./user5');
 
 function showUser() {
-	return user5.getUser().name + ', ' + user5.group.name;
+  return user5.getUser().name + ', ' + user5.group.name;
 }
 
 console.log('사용자 정보 : %s', showUser());
-

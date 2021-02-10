@@ -8,7 +8,7 @@ const user2 = require('./user2');
 console.dir(user2);
 
 function showUser() {
-	return user2.getUser().name + ', ' + user2.group.name;
+  return user2.getUser().name + ', ' + user2.group.name;
 }
 
 console.log('사용자 정보 : %s', showUser());
