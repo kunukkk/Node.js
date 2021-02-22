@@ -7,7 +7,7 @@ const add = (req, res) => {
 };
 const add_complete = (req, res) => {
   const addQuery =
-    "insert into topics (name, description, author) values (?, ?, ?)";
+    "INSERT INTO topics(name, description, author) select ?, ?, authors.id FROM authors WHERE NAME=?;";
   mySqlClient.query(
     addQuery,
     [req.body.name, req.body.description, req.body.author],

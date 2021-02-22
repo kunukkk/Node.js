@@ -23,7 +23,7 @@
     <ul>
       <%if(row.length>0) {row.forEach((item) => {%>
       <li>
-        <%=item.name%>, <%=item.description%>
+        <%=item.t_name%>, <%=item.description%>, <%=item.a_name%>
         <button onclick="location.href='/update/<%=item.id%>'">update</button>
       </li>
       <%})}%>

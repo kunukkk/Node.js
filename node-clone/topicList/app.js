@@ -2,9 +2,7 @@ const express = require("express"),
   app = express(),
   http = require("http").createServer(app),
   bodyParser = require("body-parser"),
-  router = express.Router(),
-  fs = require("fs"),
-  ejs = require("ejs");
+  router = express.Router();
 
 app.set("port", process.env.PORT || 3000);
 app.use(express.json());
@@ -34,5 +32,5 @@ router.route("/update/complete").post(updateTopic.update_complete);
 app.use("/", router);
 
 http.listen(app.get("port"), () => {
-  console.log("server start at ", app.get("port"));
+  console.log("server start at", app.get("port"));
 });
