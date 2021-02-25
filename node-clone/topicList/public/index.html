@@ -17,9 +17,20 @@
     li {
       font-size: 20px;
     }
+    .logout {
+      margin: 10px 0;
+      font-size: 1.5rem;
+    }
+    .logout button {
+      font-size: 1.3rem;
+    }
   </style>
   <body>
     <h1>TopicList</h1>
+    <div class="logout">
+      <%=name%>님
+      <button onclick="location.href='/logout'">logout</button>
+    </div>
     <ul>
       <%if(row.length>0) {row.forEach((item) => {%>
       <li>

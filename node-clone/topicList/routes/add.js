@@ -3,7 +3,11 @@ const mysql = require("mysql");
 const mySqlClient = mysql.createConnection(require("../config/db_config"));
 
 const add = (req, res) => {
-  res.render("add.html", {});
+  if (req.session.user) {
+    res.render("add.html", {});
+  } else {
+    res.redirect("/");
+  }
 };
 
 const add_complete = (req, res) => {
@@ -14,7 +18,7 @@ const add_complete = (req, res) => {
     [req.body.name, req.body.description, req.body.author],
     (err, row) => {
       console.log(row);
-      res.redirect("/");
+      res.redirect("/home");
     }
   );
 };
