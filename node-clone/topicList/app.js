@@ -28,6 +28,10 @@ app.use(
   })
 );
 
+const register = require("./routes/register");
+router.route("/register").get(register.register);
+router.route("/register/complete").post(register.register_complete);
+
 const login = require("./routes/login");
 router.route("/").get(login.login);
 router.route("/login").post(login.login_check);
