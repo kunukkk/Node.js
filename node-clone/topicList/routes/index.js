@@ -8,8 +8,6 @@ const index = (req, res) => {
       "SELECT t.id, t.name as t_name, t.description, a.name as a_name FROM topics t, authors a WHERE t.author = a.id;";
     mySqlClient.query(listQuery, (err, row) => {
       if (err) console.log("database error");
-      console.log(req.session);
-      console.log(req.session.user);
       res.render("index.html", { name: req.session.user.name, row: row });
     });
   } else {
