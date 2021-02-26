@@ -9,6 +9,8 @@ const cookieParser = require("cookie-parser"),
 
 const expressErrorHandler = require("express-error-handler");
 
+const cors = require("cors");
+
 app.set("port", process.env.PORT || 3000);
 app.use(express.json());
 app.use(bodyParser.json());
@@ -27,6 +29,8 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+app.use(cors());
 
 const register = require("./routes/register");
 router.route("/register").get(register.register);

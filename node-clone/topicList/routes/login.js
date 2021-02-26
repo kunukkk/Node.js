@@ -4,7 +4,11 @@ const crypto = require("crypto");
 const mySqlClient = mysql.createConnection(require("../config/db_config"));
 
 const login = (req, res) => {
-  res.render("login.html", {});
+  if (req.session.user) {
+    res.redirect("/home");
+  } else {
+    res.render("login.html", {});
+  }
 };
 
 const login_check = (req, res) => {
