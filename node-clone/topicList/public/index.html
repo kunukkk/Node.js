@@ -28,16 +28,16 @@
   <body>
     <h1>TopicList</h1>
     <div class="logout">
-      <%=name%>님
+      <%=username%>
       <button onclick="location.href='/logout'">logout</button>
     </div>
     <ul>
-      <%if(row.length>0) {row.forEach((item) => {%>
+      <%row.forEach((item) => {%>
       <li>
-        <%=item.t_name%>, <%=item.description%>, <%=item.a_name%>
+        <%=item.name%>, <%=item.description%>, <%=item['author.name']%>
         <button onclick="location.href='/update/<%=item.id%>'">update</button>
       </li>
-      <%})}%>
+      <%})%>
     </ul>
     <div class="btn-wrapper">
       <button onclick="location.href='/add'">add</button>
