@@ -49,7 +49,6 @@ const login_check = (req, res, next) => {
     raw: true,
   })
     .then((row) => {
-      console.log(row);
       if (row) {
         req.session.user = {
           id: row.id,

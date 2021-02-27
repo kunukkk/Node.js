@@ -19,7 +19,7 @@ const add_complete = (req, res, next) => {
     addQuery,
     [req.body.name, req.body.description, req.body.author],
     (err, row) => {
-      console.log(row);
+      if (err) console.log(err);
       res.redirect("/home");
     }
   );

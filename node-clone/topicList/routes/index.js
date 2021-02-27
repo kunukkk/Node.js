@@ -26,7 +26,6 @@ const index = (req, res, next) => {
       raw: true,
     })
       .then((row) => {
-        console.log(row);
         res.render("index.html", { username: req.session.user.name, row: row });
       })
       .catch((err) => {
