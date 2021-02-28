@@ -1,8 +1,7 @@
 // const mysql = require("mysql");
-const crypto = require("crypto");
-
 // const mySqlClient = mysql.createConnection(require("../config/db_config"));
 
+const crypto = require("crypto");
 const models = require("../models");
 
 const login = (req, res) => {

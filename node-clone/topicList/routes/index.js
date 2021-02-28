@@ -1,6 +1,6 @@
 // const mysql = require("mysql");
-
 // const mySqlClient = mysql.createConnection(require("../config/db_config"));
+
 const models = require("../models");
 
 const index = (req, res, next) => {

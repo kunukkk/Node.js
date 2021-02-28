@@ -33,7 +33,6 @@ const update = (req, res, next) => {
     raw: true,
   })
     .then((row) => {
-      console.log(row);
       res.render("update.html", {
         id: row.id,
         t_name: row.name,
@@ -48,36 +47,41 @@ const update = (req, res, next) => {
 };
 
 const update_complete = (req, res, next) => {
-  const updateQuery =
-    "UPDATE topics SET NAME=?, description=?, authorNum=(SELECT id FROM authors WHERE NAME=?) WHERE id=?;";
-  mySqlClient.query(
-    updateQuery,
-    [req.body.name, req.body.description, req.body.author, req.body.id],
-    (err, row) => {
-      if (err) console.log(err);
-      res.redirect("/home");
-    }
-  );
-  // models.Topic.update(
-  //   {
-  //     name: req.body.name,
-  //     description: req.body.description,
-  //     authorNum: Sequelize.literal(
-  //       `SELECT id FROM authors WHERE NAME=${req.body.author}`
-  //     ),
-  //   },
-  //   {
-  //     where: { id: req.body.id },
-  //   }
-  // )
-  //   .then((row) => {
-  //     console.log(row);
+  // const updateQuery =
+  //   "UPDATE topics SET NAME=?, description=?, authorNum=(SELECT id FROM authors WHERE NAME=?) WHERE id=?;";
+  // mySqlClient.query(
+  //   updateQuery,
+  //   [req.body.name, req.body.description, req.body.author, req.body.id],
+  //   (err, row) => {
+  //     if (err) console.log(err);
   //     res.redirect("/home");
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //     next(err);
-  //   });
+  //   }
+  // );
+  models.Topic.update(
+    {
+      name: req.body.name,
+      description: req.body.description,
+      authorNum: [
+        // 수정 필요
+        Sequelize.literal(
+          `SELECT id FROM author WHERE NAME=${req.body.author}`
+        ),
+      ],
+    },
+    {
+      where: { id: req.body.id },
+      raw: true,
+    }
+  )
+    .then((row) => {
+      console.log(req.body.author);
+      console.log(row);
+      res.redirect("/home");
+    })
+    .catch((err) => {
+      console.log(err);
+      next(err);
+    });
 };
 
 module.exports = { update, update_complete };
