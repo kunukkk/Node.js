@@ -60,7 +60,7 @@ app.use(
 route_loader.init(app, express.Router());
 
 //===== 404 에러 페이지 처리 =====//
-let errorHandler = expressErrorHandler({
+const errorHandler = expressErrorHandler({
   static: {
     404: './public/404.html',
   },
@@ -92,8 +92,8 @@ app.on('close', function () {
   }
 });
 
-// 시작된 서버 객체를 리턴받도록 합니다.
-let server = http.createServer(app).listen(app.get('port'), function () {
+// 시작된 서버 객체를 리턴받도록 한다.
+const server = http.createServer(app).listen(app.get('port'), function () {
   console.log('서버가 시작되었습니다. 포트 : ' + app.get('port'));
 
   // 데이터베이스 초기화

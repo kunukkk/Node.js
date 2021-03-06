@@ -1,4 +1,4 @@
-let login = function (req, res) {
+const login = function (req, res) {
   console.log('user(user2.js) 모듈 안에 있는 login 호출됨.');
 
   // 요청 파라미터 확인
@@ -70,7 +70,7 @@ let login = function (req, res) {
   }
 };
 
-let adduser = function (req, res) {
+const adduser = function (req, res) {
   console.log('user(user2.js) 모듈 안에 있는 adduser 호출됨.');
 
   let paramId = req.body.id || req.query.id;
@@ -136,7 +136,7 @@ let adduser = function (req, res) {
   }
 };
 
-let listuser = function (req, res) {
+const listuser = function (req, res) {
   console.log('user(user2.js) 모듈 안에 있는 listuser 호출됨.');
 
   // 데이터베이스 객체 참조
@@ -194,7 +194,7 @@ let listuser = function (req, res) {
 };
 
 //사용자를 인증하는 함수 : 아이디로 먼저 찾고 비밀번호를 그 다음에 비교하도록 함
-let authUser = function (database, id, password, callback) {
+const authUser = function (database, id, password, callback) {
   console.log('authUser 호출됨.');
 
   // 1. 아이디를 이용해 검색
@@ -232,7 +232,7 @@ let authUser = function (database, id, password, callback) {
 };
 
 //사용자를 등록하는 함수
-let addUser = function (database, id, password, name, callback) {
+const addUser = function (database, id, password, name, callback) {
   console.log('addUser 호출됨.');
 
   // UserModel 인스턴스 생성
